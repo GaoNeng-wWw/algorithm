@@ -6,17 +6,7 @@ const pkg = require('./package.json');
 const config = {
     output: [
         {
-            dir: './dist/lib',
-            name: pkg.name,
-            format: 'cjs'
-        },
-        {
             dir: './dist',
-            name: pkg.name,
-            format: 'umd'
-        },
-        {
-            dir: './dist/es',
             name: pkg.name,
             format: 'esm',
         },
