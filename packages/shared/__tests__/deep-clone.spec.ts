@@ -10,8 +10,13 @@ it('deep clone', ()=>{
             a:1,
             b:2,
             c: false,
-            d: [{}]
-        }
+        },
+        e: [
+            true,
+            false,
+            1,
+            ''
+        ]
     }
     expect(Object.is(deepClone(obj), obj)).toBe(false);
 })
