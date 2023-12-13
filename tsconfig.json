@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "lib": ["ES6"],
+        "moduleResolution": "NodeNext",
+    },
+    "include": ["packages"],
+    "exclude": ["node_modules"]
+}
