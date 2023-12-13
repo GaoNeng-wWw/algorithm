@@ -24,35 +24,15 @@ export class LinkListNode<T>{
         this.next = next;
         this.prev = prev;
     }
-    concat(linkList: LinkList<T>){
-        if (!this.next){
-            this.next = copyLinkList(linkList).getHead();
-            return this;
-        }
-        const a = this;
-        const b = linkList;
-        const aNextNode = a.next;
-        a.next = b.getHead();
-        b.getTail().next = aNextNode;
-        aNextNode.prev = b.getTail();
-        return this;
-    }
-    toString(){
-        let cur = this.next;
-        const arr = [this.val];
-        while (cur){
-            arr.push(cur.val);
-            cur = cur.next;
-        }
-        return arr.join('->');
-    }
 }
 
 export class LinkList<T>{
     private head: LinkListNode<T>;
     private tail: LinkListNode<T>;
     constructor(val?:T){
-        this.append(val);
+        if (val){
+            this.append(val);
+        }
     }
     append(val?: T){
         const node = val instanceof LinkListNode ? val : new LinkListNode(val, null, null)
@@ -101,14 +81,5 @@ export class LinkList<T>{
     }
     getTail(){
         return this.tail;
-    }
-    toString(){
-        let cur = this.head
-        const arr = [cur.val];
-        while(cur){
-            arr.push(cur.val);
-            cur = cur.next
-        }
-        return arr.join('->');
     }
 }

@@ -10,6 +10,11 @@ it('append', ()=>{
         expect(linklist.find(i).prev.val).toBe(i-1);
     }
     expect(linklist.find(1).prev).toBe(null);
+    const l2 = new LinkList();
+    l2.append(1);
+    expect(l2.find(1).prev).toBe(null);
+    expect(l2.find(1)).not.toBe(null);
+    expect(l2.find(1).next).toBe(null);
 })
 it('delete', ()=>{
     const linklist = new LinkList(1);
@@ -67,16 +72,4 @@ it('copy', ()=>{
     expect(l2.find(2)).not.eq(l1.find(2));
     l2.deleteByVal(2)
     expect(l1.find(2)).not.toBeNull();
-})
-it('concat',()=>{
-    const l1 = new LinkList('l1');
-    const l2 = new LinkList('l2');
-    l2.append('l2-1');
-
-    l1.append(`l1-2`);
-    l1.append(`l1-3`);
-    l1.append(`l1-4`);
-    l1.append(`l1-5`);
-    expect(l2.getHead().concat(l1).next.val).toBe('l1')
-    expect(l2.getTail().prev.val).toBe('l1-5');
 })
