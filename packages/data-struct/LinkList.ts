@@ -1,5 +1,4 @@
-import { SafeAny } from "../shared";
-import deepClone from "../shared/deep-clone";
+import {deepClone} from 'shared';
 
 export const copyLinkList = (linkList: LinkList<any>) => {
     let cur = linkList.getHead();
