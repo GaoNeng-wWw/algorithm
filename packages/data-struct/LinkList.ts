@@ -1,4 +1,4 @@
-import {deepClone} from 'shared';
+import {deepClone} from '@algorithm-plus/shared';
 
 export const copyLinkList = (linkList: LinkList<any>) => {
     let cur = linkList.getHead();

@@ -4,16 +4,14 @@
 
 本仓库收录了一些常用的算法和数据结构，方便开发者们日常使用。不用重复造轮子。
 
+## 快速使用
 
-## 目录结构
-
+```bash
+pnpm install algorithm-plus --save
 ```
-typescript // ts实现
-    src // 源码目录
-      __tests__ // 单元测试
-      lib
-        data-struct // 数据结构
-        sort // 排序算法
-        shared // 内部共享工具类
-        index.ts // 入口文件
+
+```javascript
+const {LinkList} = require('algorithm-plus')
+const l = new LinkList();
+l.append(1)
 ```
