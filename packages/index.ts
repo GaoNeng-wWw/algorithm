@@ -1,7 +1,8 @@
-import {BST, LinkList, LinkListNode} from './data-struct';
-
-export default {
-    BST,
+export * from './data-struct';
+import {LinkList, LinkListNode,BST} from './data-struct';
+const algorithmPlus = {
     LinkList,
-    LinkListNode
-}
+    LinkListNode,
+    BST
+};
+export default algorithmPlus

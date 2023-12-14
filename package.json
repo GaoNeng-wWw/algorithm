@@ -1,17 +1,29 @@
 {
-  "name": "algorithm-template",
+  "name": "algorithm-plus",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/bundle.js",
+  "types": "dist/types/packages",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "test": "vitest",
-    "test:cov": "vitest --coverage"
+    "test:cov": "vitest --coverage",
+    "build": "rollup -c"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.5",
     "@vitest/coverage-v8": "^1.0.4",
+    "rollup": "^4.9.0",
+    "tslib": "^2.6.2",
     "typescript": "^5.3.3",
     "vitest": "^1.0.4"
   }

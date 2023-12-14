@@ -1,13 +1,17 @@
 {
   "compilerOptions": {
-
     "target": "es2016",
-    "module": "commonjs",
+    "module": "ESNext",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
+    "rootDir": ".",
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "moduleResolution": "NodeNext"
   },
-  "include": ["packages"],
-  "exclude": ["node_modules"]
+  "include": ["packages/**/*.ts"],
+  "exclude": ["node_modules", "packages/**/__tests__"]
 }
