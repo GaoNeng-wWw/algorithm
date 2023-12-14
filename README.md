@@ -1,10 +1,8 @@
-# 算法
+# algorithm-plus
 
-算法（Algorithm）是指解题方案的准确而完整的描述，是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制。也就是说，能够对一定规范的输入，在有限时间内获得所要求的输出
+In mathematics and computer science, an algorithm is a finite sequence of rigorous instructions, typically used to solve a class of specific problems or to perform a computation.
 
-本仓库收录了一些常用的算法和数据结构，方便开发者们日常使用。不用重复造轮子。
-
-## 快速使用
+## quick start
 
 ```bash
 pnpm install algorithm-plus --save
@@ -15,3 +13,7 @@ const {LinkList} = require('algorithm-plus')
 const l = new LinkList();
 l.append(1)
 ```
+
+## Contribution
+
+Please make sure to read the [Contributing Guide](.github/contributing.md) before making a pull request.
