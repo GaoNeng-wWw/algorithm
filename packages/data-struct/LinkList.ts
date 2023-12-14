@@ -2,12 +2,15 @@ import {deepClone} from 'shared';
 
 export const copyLinkList = (linkList: LinkList<any>) => {
     let cur = linkList.getHead();
-    const list = new LinkList(deepClone(cur.val));
-    while (cur.next){
-        cur = cur.next;
-        list.append(deepClone(cur.val));
+    if (cur){
+        const list = new LinkList(deepClone(cur.val));
+        while (cur.next){
+            cur = cur.next;
+            list.append(deepClone(cur.val));
+        }
+        return list;
     }
-    return list;
+    return null;
 }
 
 export class LinkListNode<T>{
@@ -26,21 +29,21 @@ export class LinkListNode<T>{
 }
 
 export class LinkList<T>{
-    private head: LinkListNode<T>;
-    private tail: LinkListNode<T>;
+    private head: LinkListNode<T | undefined> | null = null;
+    private tail: LinkListNode<T | undefined> | null = null;
     constructor(val?:T){
         if (val){
             this.append(val);
         }
     }
     append(val?: T){
-        const node = val instanceof LinkListNode ? val : new LinkListNode(val, null, null)
+        const node = val instanceof LinkListNode ? val as LinkListNode<T> : new LinkListNode(val, null, null)
         if (!this.head){
             this.head = node;
             this.tail = this.head;
             return this.head;
-        }
-        this.tail.next = node;
+        }        
+        this.tail!.next = node;
         node.prev = this.tail;
         this.tail = node;
         return this.head;
@@ -53,22 +56,24 @@ export class LinkList<T>{
         return cur;
     }
     delete(
-        node: LinkListNode<T>
+        node: LinkListNode<T | undefined> | null
     ){
-        if (node === this.head){
-            node.next.prev = null;
-            this.head = node;
-            return this.head;
-        }
-        if (!node.next){
-            node.prev.next = null;
-            if (this.tail === node){
-                this.tail = node.prev;
+        if (node){
+            if (node === this.head){
+                node.next!.prev = null;
+                this.head = node;
+                return this.head;
             }
-            return this.head;
+            if (!node.next){
+                node.prev!.next = null;
+                if (this.tail === node){
+                    this.tail = node.prev;
+                }
+                return this.head;
+            }
+            node.prev!.next = node.next;
+            node.next.prev = node.prev;
         }
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
         return this.head;
     }
     deleteByVal(val: T){

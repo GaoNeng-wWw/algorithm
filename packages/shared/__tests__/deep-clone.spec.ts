@@ -1,5 +1,5 @@
 import { expect, it } from "vitest";
-import deepClone from "../deep-clone";
+import {deepClone} from "../deep-clone";
 
 it('deep clone', ()=>{
     const obj = {

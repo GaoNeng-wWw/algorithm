@@ -4,7 +4,7 @@ export class TreeNode<T> {
     public right: TreeNode<T> | null;
     public parent: TreeNode<T> | null = null;
     constructor(
-        val?:T,
+        val:T,
         left: TreeNode<T> | null = null,
         right: TreeNode<T> | null = null,
         parent: TreeNode<T> | null = null,
@@ -69,7 +69,7 @@ export class BST<T> {
             this.root = node;
             return this.root;
         }
-        let cur = this.root;
+        let cur:TreeNode<T> | null = this.root;
         let parent = this.root;
         while (cur){
             parent = cur;
@@ -103,34 +103,36 @@ export class BST<T> {
     }
     del<E extends T>(val: E){
         const node = val instanceof TreeNode ? val : this.findByVal(val);
-        if (node.isLeaf){
-            if (node.parent.left === node){
-                node.parent.left = null;
-            } else {
-                node.parent.right = null;
-            }
-            return this.root;
-        } else {
-            if (node.left && node.right){
-                const successors = node.successors() as TreeNode<T>;
-                node.val = successors.val;
-                this.del(successors as T);
-                return this.root;
-            } else if (node.left || node.right){
-                if (node.left){
-                    if (node.parent.right === node){
-                        node.left.parent = node.parent;
-                        node.parent.right = node.left;
-                        return this.root;
-                    }
+        if (node){
+            if (node.isLeaf){
+                if (node.parent && node.parent.left === node){
+                    node.parent.left = null;
                 } else {
-                    if (node.parent.right === node){
-                        node.right.parent = node.parent;
-                        node.parent.right = node.right;
-                        return this.root;
+                    node.parent && (node.parent.right = null);
+                }
+                return this.root;
+            } else {
+                if (node.left && node.right){
+                    const successors = node.successors() as TreeNode<T>;
+                    node.val = successors.val;
+                    this.del(successors as T);
+                    return this.root;
+                } else if (node.left || node.right){
+                    if (node.left){
+                        if (node.parent?.right === node){
+                            node.left.parent = node.parent;
+                            node.parent.right = node.left;
+                            return this.root;
+                        }
+                    } else {
+                        if (node.parent?.right === node){
+                            node.right && (node.right.parent = node.parent);
+                            node.parent.right = node.right;
+                            return this.root;
+                        }
                     }
                 }
             }
-        }
+    }
     }
 }

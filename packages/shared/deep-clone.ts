@@ -1,4 +1,4 @@
-const deepClone = <T>(obj:T):T => {
+export const deepClone = <T>(obj:T):T => {
     if (Array.isArray(obj)){
         let _ = [];
         for (let i=0;i<obj.length;i++){
@@ -14,5 +14,3 @@ const deepClone = <T>(obj:T):T => {
     }
     return obj;
 }
-
-export default deepClone;
