@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "shared": "workspace:^"
+    "@algorithm-plus/shared": "workspace:^"
   }
 }
