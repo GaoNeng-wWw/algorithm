@@ -44,6 +44,45 @@ export class TreeNode<T> {
             return node.parent;
         }
     }
+    preorder(
+        cb: (node: TreeNode<T>)=>void
+    ){
+        const traversal = (node: TreeNode<T> | null) => {
+            if (!node){
+                return;
+            }
+            cb(node);
+            traversal(node.left);
+            traversal(node.right);
+        }
+        traversal(this);
+    }
+    inorder(
+        cb: (node: TreeNode<T>)=>void
+    ){
+        const traversal = (node: TreeNode<T> | null) => {
+            if (!node){
+                return;
+            }
+            traversal(node.left);
+            cb(node);
+            traversal(node.right);
+        }
+        traversal(this);
+    }
+    postorder(
+        cb: (node: TreeNode<T>)=>void
+    ){
+        const traversal = (node: TreeNode<T> | null) => {
+            if (!node){
+                return;
+            }
+            traversal(node.left);
+            traversal(node.right);
+            cb(node);
+        }
+        traversal(this);
+    }
     get isLeaf(){
         return this.left === null && this.right === null;
     }
